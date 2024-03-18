@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/login.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box-login">
+            <div class="title">
+                <h3>Login</h3>
+            </div>
+            <hr>
+            <div class="box-input">
+                <input />
+                <span class="title-input">Username</span>
+            </div>
+            <div class="box-input">
+                <input type="password" required/>
+                <span class="title-input" >Password</span>
+            </div>
+            <p class="forgot-pass">Forgot Password?</p>
+            <div class="btn-login">
+                <button>Sign In</button>
+            </div>
+            <div class="register">Not a member? <a href="./register.html">SignUp</a></div>
+        </div>
+    </div>
+    
+    <script>    
+        const inputs = document.querySelectorAll('input');
+        const titleInput = [...document.querySelectorAll('.title-input')];
+
+        [...inputs].map((item, index) => {
+            item.addEventListener('click', () => {
+                titleInput[index].classList.add('active');
+            });
+
+            if (item.value.length > 0) {
+                titleInput[index].classList.add('active');
+            }
+
+            item.addEventListener('blur', () => {
+                if (item.value.length === 0) {
+                titleInput[index].classList.remove('active');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
