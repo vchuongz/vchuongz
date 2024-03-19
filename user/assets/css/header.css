@@ -111,7 +111,9 @@ svg{
 .box-menu .box-bottom{
     width: 100%;
     height: 20%;
+    margin-top: 40px;
 }
+
 .box-menu .box-bottom li{
     width: 100%;
     height: 40px;
