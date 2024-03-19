@@ -61,7 +61,7 @@ hr {
 
 .box-input input ~ .active {
     top: -10px;
-    color: blue;
+    color :rgb(255, 0, 0);
 }
 
 .box-login .forgot-pass {

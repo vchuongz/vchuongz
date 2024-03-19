@@ -57,22 +57,27 @@
     </div>
     <script src="./register.js"></script>
     <script>
-
-        const input = document.querySelectorAll('input');
-        const titleinput = [...document.querySelectorAll('.title-input')];
-
-        [...input].map((item, index) => {
-            item.addEventListener('click', () => {
-                titleinput[index].classList.add('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input');
+            const titleInput = document.querySelectorAll('.title-input');
+                inputs.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    titleInput[index].classList.add('active');
+                });
+                    if (item.value.trim() !== '') {
+                    titleInput[index].classList.add('active');
+                }
+    
+                item.addEventListener('blur', () => {
+                    if (item.value.trim() === '') { 
+                        titleInput[index].classList.remove('active');
+                    }
+                });
             });
-
-            if (item.value.length > 0) {
-                titleinput[index].classList.add('active');
-            }
-
-            item.addEventListener('blur', () => {
-                if (item.value.length === 0) {
-                titleinput[index].classList.remove('active');
+                window.addEventListener('pageshow', function(event) {
+                if (event.persisted || (window.performance && window.performance.navigation.type === 2)) { 
+                    inputs.forEach(input => input.value = '');
+                    titleInput.forEach(title => title.classList.remove('active'));
                 }
             });
         });

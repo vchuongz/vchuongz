@@ -30,25 +30,28 @@
     </div>
     
     <script>    
-        const inputs = document.querySelectorAll('input');
-        const titleInput = [...document.querySelectorAll('.title-input')];
-
-        [...inputs].map((item, index) => {
-            item.addEventListener('click', () => {
-                titleInput[index].classList.add('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input');
+            const titleInput = document.querySelectorAll('.title-input');
+                inputs.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    titleInput[index].classList.add('active');
+                });
+                    if (item.value.trim() !== '') {
+                    titleInput[index].classList.add('active');
+                }
+                item.addEventListener('blur', () => {
+                    if (item.value.trim() === '') { 
+                        titleInput[index].classList.remove('active');
+                    }
+                });
             });
-
-            if (item.value.length > 0) {
-                titleInput[index].classList.add('active');
-            }
-
-            item.addEventListener('blur', () => {
-                if (item.value.length === 0) {
-                titleInput[index].classList.remove('active');
+                window.addEventListener('pageshow', function(event) {
+                if (event.persisted || (window.performance && window.performance.navigation.type === 2)) { 
+                    titleInput.forEach(title => title.classList.remove('active'));
                 }
             });
         });
-
     </script>
 </body>
 </html>
